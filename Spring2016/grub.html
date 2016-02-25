@@ -81,7 +81,7 @@
             }
             
             #content {
-                height: 3310px;
+                //height: 3310px;
                 width: 1090px;
                 margin: auto;
                 //background: green;
@@ -224,7 +224,7 @@
     </div>
     
     <div id="content">
-        <h1> Using sshfs</h1> <br>
+        <h1> Booting Different ISOs with Grub Boot Loader</h1> <br>
         <div id="sub-content">
             <img src="https://cloud.githubusercontent.com/assets/13530427/13308368/92e08248-db27-11e5-87b0-80b7388c9b4b.png" alt="grub1" width="400" height="300">
             <div id="info">
@@ -299,8 +299,8 @@
             <div id="info">
                 <p1>Type: cd /mnt/USB/boot/grub The directory will be changed. <br>
                 Type: wget pendrivelinux.com/downloads/multibootlinux/grub.cfg <br> 
-                The Grug configuration will be downloaded. This file can be modified to add newer/different OS versions. 
-                This file must have the appropirate OS or the usb won't boot the OS correctly. <br>
+                The Grug configuration will be downloaded. This file can be modified to add newer/different ISO versions. 
+                This file must have the appropirate ISO or the usb won't boot the ISO correctly. <br>
                 The next step is very important! This could cause the whole process to be a waste of time since the usb won't boot properly. <br>
                 Type: sync</p1>
             </div>
@@ -311,19 +311,24 @@
             <div id="info">
                 <p1>Type: cd /mnt/USB <br> 
                 The directory will be changed. <br>
-                I will be downloading Tiny Core for this example. But I will list the other available links for downloadable OSs 
+                I will be downloading Tiny Core for this example. But I will list the other available links for downloadable ISOs 
                 that are already listed in the Grub configuration file. <br>
                 Type: wget "http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso" -O ubuntu.iso <br> 
                 Again, the next step is very important! This could cause the whole process to be a waste of time since the usb won't boot properly. <br>
                 Type: sync <br>
                 Type: reboot <br>
-                When your system is booting up, make sure you select Boot Options and select USB option. This should lead you 
-                to the Grub Boot Loader with a few OS system. Don't be alarmed when you see multiple OSs. This is because 
-                the Grub configuration file has the OSs in a loop to be read. But without the appropriate download, the boot 
+            </div>
+        </div>
+        
+        <div id="sub-content">
+            <div id="info">
+                <p1>When your system is booting up, make sure you select Boot Options and select USB option. This should lead you 
+                to the Grub Boot Loader with a few ISO system. Don't be alarmed when you see multiple OSs. This is because 
+                the Grub configuration file has the ISOs in a loop to be read. But without the appropriate download, the boot 
                 won't work. <br>
                 Linux Mint: wget "ftp://ftp.heanet.ie/pub/linuxmint.com/stable/15/linuxmint-15-cinnamon-dvd-32bit.iso" -O linuxmint.iso <br>
                 Ubuntu 13.04: wget "http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso" -O ubuntu.iso <br>
-                These are the other two OSs that I have successfully been able to boot.
+                These are the other two ISOs that I have successfully been able to boot.</p1>
             </div>
         </div>
             
