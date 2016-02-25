@@ -226,22 +226,33 @@
     <div id="content">
         <h1> Using sshfs</h1> <br>
         <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/13208985/7ac9feba-d8d3-11e5-8c74-3a0b608075b5.png" alt="grub1" width="400" height="300">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308368/92e08248-db27-11e5-87b0-80b7388c9b4b.png" alt="grub1" width="400" height="300">
             <div id="info">
-                <p1>Plug in an empty flash drive since this process will delete anything on your drive. <br> 
+                <p1>This document was modified from: http://www.pendrivelinux.com/boot-multiple-iso-from-usb-via-grub2-using-linux/ <br>
+                Plug in an empty flash drive since this process will delete anything on your drive onto your Linux system. <br> 
                 It is very important to be root user to continue. <br> 
-                Type: su - or sudo su or sudo su - <br> 
-                Type: fdisk -l (<- Lowercase L) This will let you what your flash drive is called. It should be
-                sdx (x can be any letter) In my case, my drive is sdc. <br>
-                Type: fdisk /dev/sdx Don't forget to replace the x with your appropriate letter. <br>
+                Type: su - or sudo su or sudo su - <br>
+                Type: df <br>
+                This command will confirm that the flash drive is connected to your computer. My flash drive is
+                on the last line.
                 </p1>
             </div>
         </div>
         
         <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573127/e0d944fc-c3a9-11e5-9ead-304d2f0f091d.JPG" alt="sshfs2" width="400" height="300">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308370/92e23020-db27-11e5-9a09-ad181e3df905.png" alt="grub2" width="400" height="300">
             <div id="info">
-                <p1>Type: d This will delete any existing partitions. <br>
+                <p1>Type: fdisk -l (<- Lowercase L) This will let you what your flash drive is called. It should be
+                sdx (x can be any letter) In my case, my drive is sdc. <br>
+                </p1>
+            </div>
+        </div>
+        
+        <div id="sub-content">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308371/92f1a9ba-db27-11e5-8e0d-522a2028f81b.png" alt="grub3" width="400" height="300">
+            <div id="info">
+                <p1>Type: fdisk /dev/sdx Don't forget to replace the x with your appropriate letter. <br>
+               	Type: d This will delete any existing partitions. <br>
                 Type: n This will create a new partition. <br>
                 Type: p For a primary partition. <br>
                 Type: 1 Creates the primary partition. <br>
@@ -250,63 +261,69 @@
                 Type: a For active. <br> 
                 Type: 1 This will make the first partition bootable. <br>
                 Type: t For partition type. <br>
-                Type: c For the use of Fat32 partition. <br>
-                Type: w This will write the changes and close fdisk.</p1>
-            </div>
-        </div>
-        
-        <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573126/e0d93908-c3a9-11e5-861e-616e8b421caa.JPG" alt="sshfs3" width="400" height="300">
-            <div id="info">
-                <p1Type: umount /dev/sdx1 This will unmount the flash drive. <br>
-                Type: mkfs.vfat -F32 -n MULTIBOOT /dev/sdx This will format the partition as Fat32. <br></p1>
-            </div>
-        </div>
-        
-        <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573128/e0da414a-c3a9-11e5-9850-21f209f75814.JPG" alt="sshfs4" width="400" height="300">
-            <div id="info">
-                <p1>Type: mkdir /mnt/USB A new directory called USB will be created under mnt. <br>
-                Type: mount /dev/sdx1 /mnt/USB The flash drive will connect again. <br>
-                Type: grub-install --force --no-floppy --boot-directory=/mnt/USB/boot /dev/sdx1 Grub will be installed 
-                on the drive. <br>
-                Type: cd /mnt/USB/boot/grub The directory will be changed. <br>
-                Type: wget pendrivelinux.com/downloads/multibootlinux/grub.cfg The Grug configuration will be downloaded. <br>
                 </p1>
             </div>
         </div>
         
         <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573129/e0dada74-c3a9-11e5-82f2-943d6dcbac89.JPG" alt="sshfs5" width="400" height="300">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308372/92f29712-db27-11e5-9fec-759a352673c2.png" alt="grub4" width="400" height="300">
             <div id="info">
-                <p1>Local will now have files under the mnt directory. Keep in mind that these files are saved
-                in the remote and are NOT saved under local. They will disappear after unmounting.</p1>
+                <p1>Type: c For the use of Fat32 partition. <br>
+                Type: w This will write the changes and close fdisk.
+                </p1>
+            </div>
+        </div>
+       
+        <div id="sub-content">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/12573125/e0d8c2c0-c3a9-11e5-9e2c-eaaba7cbc544.JPG" alt="grub5" width="400" height="300">
+            <div id="info">
+                <p1>Type: umount /dev/sdx1 This will unmount the flash drive. <br>
+                Type: mkfs.vfat -F32 -n MULTIBOOT /dev/sdx This will format the partition as Fat32. <br>
+                </p1>
             </div>
         </div>
         
         <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573125/e0d8c2c0-c3a9-11e5-9e2c-eaaba7cbc544.JPG" alt="sshfs6" width="400" height="300">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308366/92dcbb04-db27-11e5-80c4-ad38d97bea39.png" alt="grub6" width="400" height="300">
             <div id="info">
-                <p1>Creating a new file in the mounted local in the mnt directory, will indeed be saved in the 
-                remote. Once more, the new file will not be saved in local.</p1>
+                <p1>Type: mkdir /mnt/USB A new directory called USB will be created under mnt. <br>
+                Type: mount /dev/sdx1 /mnt/USB The flash drive will connect again. <br>
+                Type: grub-install --force --no-floppy --boot-directory=/mnt/USB/boot /dev/sdx1 Grub will be installed 
+                on the drive. <br>
+                </p1>
             </div>
         </div>
         
         <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573131/e0ed6eb4-c3a9-11e5-8a62-e47fc4ce415b.JPG" alt="sshfs7" width="400" height="300">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308369/92e0b240-db27-11e5-9da0-596d01a6662d.png" alt="grub7" width="400" height="300">
             <div id="info">
-                <p1>Luckily, we can copy files from remote to the local. After unmounting, the copied file will 
-                still appear in the location you wished to save it at in local.</p1>
+                <p1>Type: cd /mnt/USB/boot/grub The directory will be changed. <br>
+                Type: wget pendrivelinux.com/downloads/multibootlinux/grub.cfg <br> 
+                The Grug configuration will be downloaded. This file can be modified to add newer/different OS versions. 
+                This file must have the appropirate OS or the usb won't boot the OS correctly. <br>
+                The next step is very important! This could cause the whole process to be a waste of time since the usb won't boot properly. <br>
+                Type: sync</p1>
             </div>
         </div>
         
         <div id="sub-content">
-            <img src="https://cloud.githubusercontent.com/assets/13530427/12573130/e0ead6c2-c3a9-11e5-87b8-8c67aa85938f.JPG" alt="sshfs8" width="400" height="300">
+            <img src="https://cloud.githubusercontent.com/assets/13530427/13308367/92df6e6c-db27-11e5-9550-69e7a22038c3.png" alt="grub8" width="400" height="300">
             <div id="info">
-                <p1><pre></pre>Lastly, unmounting. Type: 
-                fusermount -u /home/localUser/mnt  
-                
-                Make sure you are no longer in the local mnt directory!!! And that is how you mount local to remote using sshfs. </pre></p1>
+                <p1>Type: cd /mnt/USB <br> 
+                The directory will be changed. <br>
+                I will be downloading Tiny Core for this example. But I will list the other available links for downloadable OSs 
+                that are already listed in the Grub configuration file. <br>
+                Type: wget "http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso" -O ubuntu.iso <br> 
+                Again, the next step is very important! This could cause the whole process to be a waste of time since the usb won't boot properly. <br>
+                Type: sync <br>
+                Type: reboot <br>
+                When your system is booting up, make sure you select Boot Options and select USB option. This should lead you 
+                to the Grub Boot Loader with a few OS system. Don't be alarmed when you see multiple OSs. This is because 
+                the Grub configuration file has the OSs in a loop to be read. But without the appropriate download, the boot 
+                won't work. <br>
+                Linux Mint: wget "ftp://ftp.heanet.ie/pub/linuxmint.com/stable/15/linuxmint-15-cinnamon-dvd-32bit.iso" -O linuxmint.iso <br>
+                Ubuntu 13.04: wget "http://releases.ubuntu.com/13.04/ubuntu-13.04-desktop-i386.iso" -O ubuntu.iso <br>
+                These are the other two OSs that I have successfully been able to boot.
             </div>
         </div>
             
