@@ -1,0 +1,9 @@
+.bg {
+	background: url(../img/mask.jpg)  no-repeat center center;
+    height: 100%;
+	text-align:center;
+}
+
+.container {
+	padding-top: 250px;
+}
